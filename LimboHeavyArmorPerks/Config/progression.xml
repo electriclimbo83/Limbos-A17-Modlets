@@ -1,0 +1,19 @@
+<LimboHeavyArmorPerks>
+	
+	<append xpath="/progression/perks/perk[@name='perkHeavyArmor']/effect_group and @tags='heavyarmor'>
+
+				<passive_effect name="StaminaChangeOT" operation="perc_add" value="0.1,0.2" level="3,5" tags="walking"/>
+				<passive_effect name="StaminaChangeOT" operation="perc_add" value="0.1,0.3" level="3,5" tags="running"/>
+				<!--<passive_effect name="Mobility" operation="perc_add" value="0.06" level="5" tags="heavyarmor"/> !-->
+	</append>
+
+</LimboHeavyArmorPerks>
+
+<!-- NO!
+quotes/category[@name='Sport' and author="James Small"] NO
+
+YES!
+quotes/category[@name='Sport' and ./author/text()='James Small'] !-->
+
+<!--<append xpath="/progression/perks/perk[@name='perkHeavyArmor']/effect_group and @tags='heavyarmor'>9mmBullet,NoAmmo</set>--!>
+<!--<set xpath="/items/item/property[@class='Action0']/property[@name='Magazine_items' and @value='9mmBullet']/@value">9mmBullet,NoAmmo</set>--!>

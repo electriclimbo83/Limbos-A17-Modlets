@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xml>
+	<ModInfo>
+		<Name value ="Limbo's Starter Quest" />
+		<Description value="My personal collection of modlets!" />
+		<Author value="ElectricLimbo83" />
+		<Version value="A17.2" />
+		<Website value ="null" />
+	</ModInfo>
+</xml>

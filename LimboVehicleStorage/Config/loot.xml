@@ -1,0 +1,20 @@
+<LimboVehicleStorage>
+
+	<!-- This mod gives more substantial storage rewards for building new vehicles !-->
+	
+	<!-- Increased bicycle storage from 9,1 (9 columns, 1 row for 9 total slots) to 9,2 (18 total slots) !-->
+	<set xpath="/lootcontainers/lootcontainer[@id='76']/@size">9,2</set>
+
+	<!-- Increased minibike storage from 9,3 (27 total slots) to 9,4 (36 total slots) !-->
+	<set xpath="/lootcontainers/lootcontainer[@id='77']/@size">9,4</set>
+	
+	<!-- Increased motorcyle storage from 9,4 (36 total slots) to 9,6 (54 total slots) !-->
+	<set xpath="/lootcontainers/lootcontainer[@id='78']/@size">9,6</set>
+
+	<!-- Increased 4x4Truck storage from 9,7 (63 total slots) to 9,8 (72 total slots) !-->
+	<set xpath="/lootcontainers/lootcontainer[@id='79']/@size">9,8</set>
+
+	<!-- Increased gyrocopter storage from 9,5 (45 total slots) to 9,8 (72 total slots) !-->
+	<set xpath="/lootcontainers/lootcontainer[@id='80']/@size">9,8</set>
+
+</LimboVehicleStorage>

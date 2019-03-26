@@ -1,0 +1,18 @@
+<LimboStarterQuest>
+		
+		<!-- I based this modlet off IceHot's excellent "Trader Quest Rewards" modlet, link here:
+		https://7daystodie.com/forums/showthread.php?102546-Trader-Quest-Rewards !-->
+		
+		<!--I used his modlet as an xpath syntax guide:
+		<set xpath="/quests/quest[@id='tier1_clear']/reward[@type='Exp']/@value">5000</set> !-->
+		
+		
+		<!-- Testing the first starter !-->
+		<!-- quest_BasicSurvival1<set xpath="/quests/quest[@id='quest_BasicSurvival1']/reward[@type='Exp']/@value">50000 </set> !-->
+		
+		<!-- Here's the real deal !-->
+		<set xpath="/quests/quest[@id='quest_BasicSurvival8']/reward[@type='SkillPoints']/@value">9 </set>
+
+</LimboStarterQuest>
+
+

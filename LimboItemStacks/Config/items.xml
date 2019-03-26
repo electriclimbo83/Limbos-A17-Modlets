@@ -1,0 +1,12 @@
+<LimboItemStacks>
+	<set xpath="/items/item[contains(@name,'medical')]/property[@name='Stacknumber']/@value">500</set>
+	<set xpath="/items/item[contains(@name,'drug')]/property[@name='Stacknumber']/@value">500</set>
+	<set xpath="/items/item[contains(@name,'food')]/property[@name='Stacknumber']/@value">1000</set>
+	<set xpath="/items/item[contains(@name,'foodCrop')]/property[@name='Stacknumber']/@value">5000</set>
+	<set xpath="/items/item[contains(@name,'drink')]/property[@name='Stacknumber']/@value">1000</set>
+	<set xpath="/items/item[contains(@name,'ammo')]/property[@name='Stacknumber']/@value">2500</set>
+	<set xpath="/items/item[contains(@name,'thrownAmmo')]/property[@name='Stacknumber']/@value">100</set>
+	<set xpath="/items/item[contains(@name,'resource')]/property[@name='Stacknumber']/@value">20000</set>
+	<set xpath="/items/item[contains(@name,'casinoCoin')]/property[@name='Stacknumber']/@value">50000</set>
+	<set xpath="/items/item[contains(@name,'oldCash')]/property[@name='Stacknumber']/@value">50000</set>
+</LimboItemStacks>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xml>
+	<ModInfo>
+		<Name value ="Limbo's Increased Item Stacks" />
+		<Description value="Inspired by FlexibleGames A17 Modding Tutorial videos, this is a collection of modlets by ElectricLimbo83" />
+		<Author value="ElectricLimbo83" />
+		<Version value="A17.2" />
+		<Website value ="null" />
+	</ModInfo>
+</xml>

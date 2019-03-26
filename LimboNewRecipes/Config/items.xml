@@ -1,0 +1,248 @@
+<LimboNewRecipes>
+	<append xpath="/items"> 
+		<item name="weedCleaver"> <!-- This is FlexibleGame's Weed Cleaver from his Youtube "A17 How to Mod" series !-->
+			<property name="Tags" value="knife,melee,light,weapon,meleeWeapon,perkDeepCuts,perkTheHuntsman"/>
+			<property name="DisplayType" value="melee"/>
+			<property name="HoldType" value="47"/>
+			<property name="Meshfile" value="Items/Weapons/Melee/Knives/machetePrefab"/>
+			<property name="Material" value="Mmetal"/>
+			<property name="RepairTools" value="resourceForgedIron"/>
+			<property name="DegradationBreaksAfter" value="false"/>
+			<property name="EconomicValue" value="600"/>
+			<property name="SoundJammed" value="ItemNeedsRepair"/>
+			<property name="SoundDestroy" value="wooddestroy1"/>
+			<property name="Weight" value="200"/>
+			<property name="Group" value="Ammo/Weapons"/>
+			<property name="ActionSkillGroup" value="Blade Weapons"/>
+			<property name="CraftingSkillGroup" value="craftSkillWeapons"/>
+			<property name="RepairExpMultiplier" value="5.5"/>
+
+			<property class="Action0">
+				<property name="Class" value="DynamicMelee"/>
+				<property name="Damage_type" value="Slashing"/>
+				<property name="Sphere" value="0.15"/>   <!-- limit to 0.15, else the sphere cast can overlap the target already -->
+				<property name="Sound_start" value="swoosh"/>
+				<property name="ToolCategory.Butcher" value="0" param1="4"/>
+					<!-- This triggers the use of the special corpse harvesting animation if there is a matching harvest event.
+					Also, param1  is the damage multiplier for corpse harvesting. -->
+				<property name="Sound_harvesting" value="open_animal" param1="organic"/>
+			</property>
+			<property class="Action1">
+				<property name="Class" value="DynamicMelee"/>
+				<property name="Damage_type" value="Slashing"/>
+				<property name="Sphere" value="0.15"/>   <!-- limit to 0.15, else the sphere cast can overlap the target already -->
+				<property name="Sound_start" value="swoosh"/>
+			</property>
+
+			<effect_group name="Base Effects">
+				<passive_effect name="MaxRange" operation="base_set" value="10"/>
+				<passive_effect name="BlockRange" operation="base_set" value="10"/>
+				<passive_effect name="EntityDamage" operation="base_set" value="0"/> <!-- meleeToolMachete -->
+				<passive_effect name="BlockDamage" operation="base_set" value="5"/>
+				<passive_effect name="HarvestCount" operation="base_set" value="2" tags="cropHarvest"/>
+				<passive_effect name="HarvestCount" operation="base_set" value="1" tags="wildCropsHarvest"/>
+				<passive_effect name="AttacksPerMinute" operation="base_set" value="300"/> <!-- A16 1.2 -->
+				<passive_effect name="StaminaLoss" operation="base_set" value="1" tags="primary"/>
+				<passive_effect name="DegradationMax" operation="base_set" value="500,8000" tier="1,6"/>
+				<passive_effect name="DegradationPerUse" operation="base_set" value="1,1" tier="1,6"/>
+				<passive_effect name="ModSlots" operation="base_set" value="0,5" tier="1,6"/>
+				<passive_effect name="ModPowerBonus" operation="perc_add" value=".15" tags="EntityDamage,BlockDamage"/>
+				<passive_effect name="ModPowerBonus" operation="base_add" value="200" tags="EconomicValue"/>
+				<passive_effect name="DamageModifier" operation="perc_add" value="25" tags="plants,leaves"/>
+				<passive_effect name="DamageModifier" operation="base_set" value="0" tags="stone,earth,wood"/>
+			</effect_group>
+		</item>
+		<item name="ammoArrowPlastic">
+			<property name="DisplayType" value="ammoArrow"/>
+			<property name="Tags" value="ranged,perkArchery"/>
+			<property name="Meshfile" value="Items/Weapons/Ranged/Bows/WoodenBow/Arrow"/>
+			<property name="HoldType" value="45"/>
+			<property name="HandMeshfile" value="Items/Misc/sackPrefab"/>
+			<property name="DropMeshfile" value="Items/Misc/sack_droppedPrefab"/>
+			<property name="IsSticky" value="true"/>
+			<property name="StickyOffset" value="0.5"/>
+			<property name="Material" value="Mwood"/>
+			<property name="Stacknumber" value="2500"/> <!-- STK ammo -->
+			<property name="FuelValue" value="25"/>
+			<property name="EconomicValue" value="12"/>
+			<property name="EconomicBundleSize" value="5"/>
+			<property class="Action1">
+				<property name="Class" value="Projectile"/>
+				<property name="Explosion.ParticleIndex" value="0"/> <!-- no expl. -->
+				<property name="FlyTime" value="0"/>
+				<property name="Gravity" value="-4"/>
+				<property name="LifeTime" value="12"/>
+			</property>
+			<property name="Group" value="Ammo/Weapons,Basics"/>
+			<property name="CraftingSkillGroup" value="craftSkillWeapons"/>
+
+			<effect_group name="Base Effects" tiered="false"> <!-- ammoArrowStone -->
+				<passive_effect name="EntityDamage" operation="base_set" value="26"/>
+				<passive_effect name="BlockDamage" operation="base_set" value="1"/>
+				<passive_effect name="DamageModifier" operation="perc_set" value="0.1" tags="wood"/>
+				<passive_effect name="DamageModifier" operation="perc_set" value="0" tags="earth,metal,cloth"/>
+				<passive_effect name="ProjectileVelocity" operation="base_set" value="45"/>
+				<passive_effect name="ProjectileStickChance" operation="perc_set" value="0" tags="glass"/>
+			</effect_group>
+		</item>
+		<item name="gunWoodenBow">
+			<property name="Tags" value="weapon,ranged,bowDrawPenalty,archery,bow,perkArchery"/>
+			<property name="DisplayType" value="rangedBow"/>
+			<property name="HoldType" value="27"/> <!-- "Sway Off" is hardcoded for hold types 26, 27, 53 -->
+			<property name="Meshfile" value="Items/Weapons/Ranged/Bows/WoodenBow/WoodenBowPrefab"/>
+			<property name="Material" value="Mwood"/>
+			<property name="RepairTools" value="resourceWood"/>
+			<property name="FuelValue" value="200"/>
+			<property name="EconomicValue" value="5"/>
+			<property name="EconomicBundleSize" value="1"/>
+			<property name="SellableToTrader" value="false"/>
+			<property name="DegradationBreaksAfter" value="false"/>
+			<property name="SoundJammed" value="ItemNeedsRepair"/>
+			<property name="SoundDestroy" value="wooddestroy1"/>
+			<property name="CrosshairOnAim" value="true"/> <!-- aimTest -->
+			<property name="CrosshairUpAfterShot" value="false"/>
+			<property name="ActionSkillGroup" value="Archery"/>
+			<property name="CraftingSkillGroup" value="craftSkillWeapons"/>
+			<property name="RepairExpMultiplier" value="5.5"/>
+			<property name="PickupJournalEntry" value="alternateAmmoTip"/>
+			<property class="Action0">
+				<property name="Class" value="Catapult"/>
+				<!-- Catapult might not be the best name for it but it can also be used for a slingshot -->
+				<property name="Hitmask_override" value="Arrow"/>
+				<property name="Delay" value="1"/> <!-- obsolete if rounds per minute exists -->
+				<property name="Magazine_items" value="ammoArrowStone,ammoArrowIron,ammoArrowPlastic,ammoArrowSteelAP,ammoArrowFlaming"/>
+				<!-- <property name="Reload_time" value=".9"/> -->
+				<property name="Sound_start" value="bow_fire"/>
+				<property name="Sound_repeat" value=""/>
+				<property name="Sound_end" value=""/>
+				<property name="Sound_empty" value="weapon_empty"/>
+				<property name="Sound_reload" value="bow_reload"/>
+				<property name="Sound_draw" value="bow_draw"/>
+				<property name="Sound_cancel" value="bow_fire_cancel"/>
+				<property name="Particles_muzzle_fire" value="nozzleflashuzi"/>
+				<property name="Particles_muzzle_smoke" value="nozzlesmokeuzi"/>
+				<property name="Max_strain_time" value="0.5"/>
+				<property name="ScopeOffset" value="-0.00062,0.088,0.065"/>
+				<property name="SideOffset" value="0,0,0"/>
+				<property name="BarrelOffset" value="0,0,0"/>
+			</property>
+			<property class="Action1"> <!-- UseAction -->
+				<property name="Class" value="Zoom"/>
+				<property name="Zoom_max_out" value="55"/>
+				<property name="Zoom_max_in" value="55"/>
+			</property>
+
+			<property name="Group" value="Ammo/Weapons,Basics"/>
+			<effect_group name="Base Effects"> <!-- gunWoodenBow -->
+				<passive_effect name="DamageFalloffRange" operation="base_set" value="20"/>
+				<passive_effect name="MaxRange" operation="base_set" value="100"/>
+				<passive_effect name="MagazineSize" operation="base_set" value="1"/>
+
+				<passive_effect name="EntityDamage" operation="perc_add" value="0"/>
+				<passive_effect name="BlockDamage" operation="perc_add" value="0"/>
+
+				<passive_effect name="SpreadDegreesVertical" operation="base_set" value="2.8"/>
+				<passive_effect name="SpreadDegreesHorizontal" operation="base_set" value="2.8"/>
+				<passive_effect name="SpreadMultiplierAiming" operation="base_set" value=".26"/>
+				<passive_effect name="SpreadMultiplierCrouching" operation="base_set" value=".8"/>
+				<passive_effect name="SpreadMultiplierWalking" operation="base_set" value="1.5"/>
+				<passive_effect name="SpreadMultiplierRunning" operation="base_set" value="2.2"/>
+
+				<passive_effect name="IncrementalSpreadMultiplier" operation="base_set" value="2"/>
+				<passive_effect name="WeaponHandling" operation="base_set" value="0.9"/> <!-- crosshair reset speed -->
+
+				<passive_effect name="RoundsPerMinute" operation="base_set" value="75"/>
+				<passive_effect name="ReloadSpeedMultiplier" operation="base_set" value=".9"/>
+
+				<!--
+				<passive_effect name="AttacksPerMinute" operation="perc_add" value="15"/>
+				-->
+				<!-- <passive_effect name="AttacksPerMinute" operation="base_set" value="166"/>
+
+				AttacksPerMinute, RoundsPerMinute  do NOT affect bow rate of fire
+				-->
+
+				<passive_effect name="BurstRoundCount" operation="base_set" value="1"/>
+				<passive_effect name="KickDegreesVertical" operation="base_set" value="2"/>
+				<passive_effect name="KickDegreesHorizontal" operation="base_set" value="-1,1"/>
+				<display_value name="dRecoil" value="20" />
+				<passive_effect name="DegradationMax" operation="base_set" value="500,2000" tier="1,6"/>
+				<passive_effect name="ModSlots" operation="base_set" value="0,5" tier="1,6"/>
+				<passive_effect name="ModPowerBonus" operation="perc_add" value="0.15" tags="EntityDamage"/>
+				<passive_effect name="ModPowerBonus" operation="base_add" value="200" tags="EconomicValue"/>
+			</effect_group>
+		</item>
+		<item name="gunCompoundBow">
+			<property name="Tags" value="weapon,ranged,bowDrawPenalty,archery,bow,perkArchery"/>
+			<property name="DisplayType" value="rangedBow"/>
+			<property name="HoldType" value="53"/>
+			<property name="Meshfile" value="Items/Weapons/Ranged/Bows/CompoundBow/CompoundBowPrefab"/>
+			<property name="Material" value="Mplastics"/>
+			<property name="RepairTools" value="resourceRepairKit"/> <property name="Weight" value="12"/>
+			<property name="DegradationBreaksAfter" value="false"/>
+			<property name="SoundJammed" value="ItemNeedsRepair"/>
+			<property name="SoundDestroy" value="wooddestroy1"/>
+			<property name="CrosshairOnAim" value="true"/> <!-- aimTest -->
+			<property name="CrosshairUpAfterShot" value="false"/>
+			<property name="EconomicBundleSize" value="1"/>
+			<property name="EconomicValue" value="900"/>
+			<property name="Group" value="Ammo/Weapons"/>
+			<property name="ActionSkillGroup" value="Archery"/>
+			<property name="CraftingSkillGroup" value="craftSkillWeapons"/>
+			<property name="RepairExpMultiplier" value="5.5"/>
+			<property name="PickupJournalEntry" value="alternateAmmoTip"/>
+			<property class="Action0">
+				<property name="Class" value="Catapult"/>
+				<!-- Catapult might not be the best name for it but it can also be used for a slingshot -->
+				<property name="Hitmask_override" value="Arrow"/>
+				<property name="Delay" value="1"/> <!-- obsolete if rounds per minute exists -->
+				<property name="Magazine_items" value="ammoArrowStone,ammoArrowIron,ammoArrowPlastic,ammoArrowSteelAP,ammoArrowFlaming"/>
+				<!-- <property name="Reload_time" value=".9"/> -->
+				<property name="Sound_start" value="bow_fire"/>
+				<property name="Sound_repeat" value=""/>
+				<property name="Sound_end" value=""/>
+				<property name="Sound_empty" value="weapon_empty"/>
+				<property name="Sound_reload" value="bow_reload"/>
+				<property name="Sound_draw" value="bow_draw"/>
+				<property name="Sound_cancel" value="bow_fire_cancel"/>
+				<property name="Particles_muzzle_fire" value="nozzleflashuzi"/>
+				<property name="Particles_muzzle_smoke" value="nozzlesmokeuzi"/>
+				<property name="Max_strain_time" value="0.43"/>
+			</property>
+			<property class="Action1">
+				<property name="Class" value="Zoom"/>
+				<property name="Zoom_max_out" value="40"/>
+				<property name="Zoom_max_in" value="40"/>
+			</property>
+			<effect_group name="Base Effects"> <!-- gunCompoundBow -->
+				<passive_effect name="ProjectileVelocity" operation="perc_add" value="0.2"/>
+				<passive_effect name="DamageFalloffRange" operation="base_set" value="30"/>
+				<passive_effect name="MaxRange" operation="base_set" value="100"/>
+				<passive_effect name="MagazineSize" operation="base_set" value="1"/>
+
+				<passive_effect name="EntityDamage" operation="base_add" value="4"/>
+
+				<passive_effect name="SpreadDegreesVertical" operation="base_set" value="2.67"/>
+				<passive_effect name="SpreadDegreesHorizontal" operation="base_set" value="2.67"/>
+				<passive_effect name="SpreadMultiplierAiming" operation="base_set" value=".15"/>
+				<passive_effect name="SpreadMultiplierCrouching" operation="base_set" value=".8"/>
+				<passive_effect name="SpreadMultiplierWalking" operation="base_set" value="1.5"/>
+				<passive_effect name="SpreadMultiplierRunning" operation="base_set" value="2.2"/>
+
+				<passive_effect name="ReloadSpeedMultiplier" operation="base_set" value=".9"/>
+				<passive_effect name="IncrementalSpreadMultiplier" operation="base_set" value="2"/>
+				<passive_effect name="WeaponHandling" operation="base_set" value="0.9"/> <!-- crosshair reset speed -->
+
+				<passive_effect name="RoundsPerMinute" operation="base_set" value="75"/>
+				<passive_effect name="BurstRoundCount" operation="base_set" value="1"/>
+				<passive_effect name="KickDegreesVertical" operation="base_set" value="2"/>
+				<passive_effect name="KickDegreesHorizontal" operation="base_set" value="-1,1"/>
+				<display_value name="dRecoil" value="20" />
+				<passive_effect name="DegradationMax" operation="base_set" value="800,2800" tier="1,6"/>
+				<passive_effect name="ModSlots" operation="base_set" value="0,5" tier="1,6"/>
+				<passive_effect name="ModPowerBonus" operation="perc_add" value="0.15" tags="EntityDamage"/>
+				<passive_effect name="ModPowerBonus" operation="base_add" value="200" tags="EconomicValue"/>
+			</effect_group>
+		</item>
+	</append>
+</LimboNewRecipes>

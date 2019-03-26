@@ -1,0 +1,19 @@
+<LimboProgression>
+	
+	<!-- If you are struggling understanding the syntax below, check out Sphereii's XPath Modding Explanation Thread
+	
+		Look at his minibike storage example here:
+		
+		<set xpath="/lootcontainers/lootcontainer[@id='62']/@size">7,6</set>
+		
+		We do not need the [] brackets, nor the @id.  We just need /progression/level/@skill_points_per_level
+		
+		See below example on how to increase the max player level from 300 to 500:
+	
+	<set xpath = "/progression/level/max_level">500</set>
+	
+	This would change the player's max level from 300 to 500 !-->
+	
+	<set xpath = "/progression/level/@skill_points_per_level">2</set>
+
+</LimboProgression>

@@ -1,0 +1,21 @@
+<LimboHeavyArmorPerks>
+
+	<append xpath="/items/item[contains(@name,'armorSteel') or contains(@name,'armorScrap') or contains(@name,'armorIron') or contains(@name, 'armorMiningHelmet') or contains(@name,'armorFootballHelmet') or contains (@name,'armorSwatHelmet')]">
+	
+		<effect_group name="Item Bonus for Heavy armor level 3">
+			<requirement name="ProgressionLevel" progression_name="perkHeavyArmor" operation="Equals" value="3"/>
+			<passive_effect name="StaminaChangeOT" operation="perc_add" value="0.009" />
+		</effect_group>
+	
+		<effect_group name="Item Bonus for Heavy armor level 4">
+			<requirement name="ProgressionLevel" progression_name="perkHeavyArmor" operation="Equals" value="4"/>
+			<passive_effect name="StaminaChangeOT" operation="perc_add" value="0.018" />
+		</effect_group>
+
+		<effect_group name="Item Bonus for Heavy armor level 5">
+			<requirement name="ProgressionLevel" progression_name="perkHeavyArmor" operation="Equals" value="5"/>
+			<passive_effect name="StaminaChangeOT" operation="perc_add" value="0.027" />
+		</effect_group>
+	</append>
+
+</LimboHeavyArmorPerks>

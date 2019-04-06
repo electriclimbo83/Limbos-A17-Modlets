@@ -1,22 +1,52 @@
+<!--Thanks to 7DTD forum guru and teacher Sphereii for motivation, guidance, and consulting-->
+
+<!--Four interesting things happening here:-->
+<!--1.) We're modding item.xml, but we're also adding/modding effects from progression.xml.  I had no idea we could do this (THANK YOU SPHEREII)-->
+<!--2.) The period "." in front of "/property" simply means "select from this current node" -->
+<!--3.) The expression uses two conditionals: IF the item in items contains 'armor' in the name AND its currently selected node's property named "Tags" contains 'heavyarmor', THEN do stuff between the appends  -->
+<!--4.) V1 only checked contains name 'armor.' I accidentally appended all the armorMaster items.  There is meow in homeowner, right? -->
+<!--Sphereii wrote up the additional conditionals with the boolean AND. -->
+
+<!-- TO DO -->
+<!-- Haven't figured out how to hook up the display_value name "dStaminaChangeOT" properly. -->
+<!-- The Pimps hard-coded -0.9 on all heavy armor items. All Append does is add all three values to the original -0.9. -->
+<!-- Is there a way for display_value's value to simply take in "StaminaChangeOT" instead of -0.9? -->
+<!-- I'll try modding the xui.xml instead -->
 <LimboHeavyArmorPerksV2>
 
-	<append xpath="/items/item[contains(@name,'armor')][./property[@name='Tags' and (contains(@value,'heavyarmor'))]]">
+	<!--<set xpath="/items/item[contains(@name,'armor')][./property[@name='Tags' and (contains(@value,'heavyarmor'))]]/effect_group/display_value[@name='dStaminaChangeOT']/@value"> 0 </set> -->
 	
+	<!--<remove xpath="/items/item[contains(@name,'armor')][./property[@name='Tags' and (contains(@value,'heavyarmor'))]]/effect_group/display_value[@name='dStaminaChangeOT']"> </remove> -->
+	
+	<!-- <display_value name="dStaminaChangeOT" value="-.81"/> -->
+	
+	<append xpath="/items/item[contains(@name,'armor')][./property[@name='Tags' and (contains(@value,'heavyarmor'))]]">	
 		<effect_group name="Item Bonus for Heavy armor level 3">
 			<requirement name="ProgressionLevel" progression_name="perkHeavyArmor" operation="Equals" value="3"/>
-			<passive_effect name="StaminaChangeOT" operation="perc_add" value="0.009" />
+			<passive_effect name="StaminaChangeOT" operation="perc_add" value="0.0045" tags="walking"/>
+			<passive_effect name="StaminaChangeOT" operation="perc_add" value="0.009" tags="running"/>
+			<passive_effect name="Mobility" operation="perc_add" value="0.01"/>
 		</effect_group>
+	</append>
 	
+	
+	
+	<append xpath="/items/item[contains(@name,'armor')][./property[@name='Tags' and (contains(@value,'heavyarmor'))]]">
 		<effect_group name="Item Bonus for Heavy armor level 4">
 			<requirement name="ProgressionLevel" progression_name="perkHeavyArmor" operation="Equals" value="4"/>
-			<passive_effect name="StaminaChangeOT" operation="perc_add" value="0.018" />
+			<passive_effect name="StaminaChangeOT" operation="perc_add" value="0.009" tags="walking"/>
+			<passive_effect name="StaminaChangeOT" operation="perc_add" value="0.018" tags="running"/>
+			<passive_effect name="Mobility" operation="perc_add" value="0.02"/>
 		</effect_group>
-
+	</append>
+	
+	<append xpath="/items/item[contains(@name,'armor')][./property[@name='Tags' and (contains(@value,'heavyarmor'))]]">
 		<effect_group name="Item Bonus for Heavy armor level 5">
 			<requirement name="ProgressionLevel" progression_name="perkHeavyArmor" operation="Equals" value="5"/>
-			<passive_effect name="StaminaChangeOT" operation="perc_add" value="0.036" />
+			<passive_effect name="StaminaChangeOT" operation="perc_add" value="0.018" tags="walking"/>
+			<passive_effect name="StaminaChangeOT" operation="perc_add" value="0.036" tags="running"/>
+			<passive_effect name="Mobility" operation="perc_add" value="0.03"/>
 		</effect_group>
-		
 	</append>
 
 </LimboHeavyArmorPerksV2>
